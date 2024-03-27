@@ -6,3 +6,7 @@ class Customer(AbstractUser):
 
     def __str__(self):
         return self.username
+    
+    class Meta:
+        verbose_name = 'Customer'
+        verbose_name_plural = 'Customers'
