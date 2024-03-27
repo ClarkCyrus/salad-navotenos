@@ -115,7 +115,7 @@ def employee_signup(request):
             return render(request, 'customer_signup.html', {'error_message' : 'username already taken'})
 
         # Put in database
-        user = Customer.objects.create_user(username=username, password=password)
+        user = Employee.objects.create_user(username=username, password=password)
         user.save()
         
         # Proceed to sign in page

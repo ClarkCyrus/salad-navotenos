@@ -1,8 +1,8 @@
-from django.contrib.auth import get_user_model
 from django.db import models
+from main.models import SaladUser
 
-class Employee(models.Model):
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
+class Employee(SaladUser):
+    position = models.CharField(max_length=100)
 
     class Meta:
         verbose_name = 'Employee'
