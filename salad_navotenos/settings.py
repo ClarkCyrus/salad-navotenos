@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-AUTH_USER_MODEL = 'customer.Customer'
+AUTH_USER_MODEL = 'users.SaladUser'
 
 AUTHENTICATION_BACKENDS = [
     'main.backends.CustomerAuthentication',
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'main',
     'customer',
     'salad'
+    'users'
+    
 ]
 
 MIDDLEWARE = [
