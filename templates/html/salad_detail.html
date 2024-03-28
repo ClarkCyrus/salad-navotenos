@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room</title>
+    <title>Salad</title>
 </head>
 <body>
-    <p>Room Page</p>
-  
-    {% for salad in salads %}
-        <a href="{{ salad.get_absolute_url }}">{{ salad.name }}</a>
-    {% endfor %}
-
+    <h1>{{ salad.name }}</h1>
+    <p>{{ salad.description }}</p>
 </body>
 </html>

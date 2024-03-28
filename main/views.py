@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from salad.models import Salad
 from django.http import HttpResponse
 from customer.models import Customer
 from django.contrib.auth import authenticate, login, logout
@@ -7,8 +8,13 @@ from main.backends import CustomerAuthentication
 def home(request):
     return render(request, 'home.html')
 
-def salad(request):
-    return HttpResponse("Salad")
+def room(request):
+    salads=Salad.objects.all()
+    return render(request, 'room.html', {'salads': salads})
+
+def salad_detail(request, pk):
+    salad = get_object_or_404(Salad, pk=pk)
+    return render(request, 'salad_detail.html', {'salad': salad})
 
 def signin(request):
     if request.method == 'POST':
