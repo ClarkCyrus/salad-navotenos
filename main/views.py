@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from customer.models import Customer
-from employee.models import Employee
-from django.contrib.auth.models import User
+from users.models import Customer, Employee
 from django.contrib.auth import authenticate, login, logout
 from main.backends import CustomerAuthentication
 

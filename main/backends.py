@@ -1,6 +1,6 @@
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
-from customer.models import Customer
+from users.models import Customer
 
 class CustomerAuthentication(ModelBackend):
 

@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-AUTH_USER_MODEL = 'main.SaladUser'
+AUTH_USER_MODEL = 'users.SaladUser'
 
 AUTHENTICATION_BACKENDS = [
     'main.backends.CustomerAuthentication',
@@ -45,8 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
-    'customer',
-    'employee',
+    'users'
     
 ]
 
