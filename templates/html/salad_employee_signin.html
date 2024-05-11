@@ -1,12 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Sign up</title>
+        <title>Employee Sign in</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='../css/signup.css'>
-        <script src='../js/signup.js'></script>
+        <link rel='stylesheet' type='text/css' media='screen' href='../css/signin.css'>
+        <script src='../js/signin.js'></script>
     </head>
     <body>
 
@@ -14,16 +16,13 @@
 
             {% csrf_token %} <!-- Protection against unauthorized submisstions -->
 
-            <label for="inputUsername">username: </label>
+            <label for="inputUsername">Username: </label>
             <input type="text" id="inputUsername" name="inputUsername">
 
-            <label for="inputPassword">password:</label>
+            <label for="inputPassword">Password:</label>
             <input type="password" id="inputPassword" name="inputPassword">
 
-            <label for="confirmInputPassword">password:</label>
-            <input type="password" id="confirmInputPassword" name="confirmInputPassword">
-
-            <button type="submit" id="submit">Sign Up!</button>
+            <button type="submit" id="submit">Sign In!</button>
 
         </form>
 
