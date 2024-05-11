@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from users.models import Customer, Employee
+from users.models import Salad_Customer, Salad_Employee
 from django.contrib.auth import authenticate, login, logout
 from main.backends import CustomerAuthentication
 
@@ -10,12 +10,12 @@ def home(request):
 def salad(request):
     return HttpResponse("Salad")
 
-def signin(request):
+def salad_signin(request):
     if request.method == 'POST':
         username_contact_number = request.POST.get('inputUsernameContactNumber')
         password = request.POST.get('inputPassword')
 
-        user = CustomerAuthentication().authenticate(request, username=username_contact_number, password=password)
+        user = CustomerAuthentication().authenticate_salad_customer(request, username=username_contact_number, password=password)
 
         if user is not None:
             # If authentication succeeds, log in the user
@@ -27,7 +27,8 @@ def signin(request):
     else:
         return render(request, 'customer_signin.html')
 
-def signup(request):
+
+def salad_signup(request):
     if request.method == 'POST': # POST means sending data to the server
 
         # Get neccessary info with name attribute in form of signup.html
@@ -45,7 +46,7 @@ def signup(request):
             return render(request, 'customer_signup.html', {'error_message': 'Passwords do not match'})
 
         # Reject username if already exists in the database
-        if Customer.objects.filter(username=username).exists():
+        if Salad_Customer.objects.filter(username=username).exists():
             return render(request, 'customer_signup.html', {'error_message': 'Username already taken'})
 
         # Mismatch password
@@ -53,11 +54,11 @@ def signup(request):
             return render(request, 'customer_signup.html', {'error_message' : 'password failed to match'})
 
         # Reject username if already exist in database
-        if Customer.objects.filter(username = username).exists():
+        if Salad_Customer.objects.filter(username = username).exists():
             return render(request, 'customer_signup.html', {'error_message' : 'username already taken'})
 
         # Put in database
-        user = Customer.objects.create_user(username=username, contact_number=contact_number, password=password)
+        user = Salad_Customer.objects.create_user(username=username, contact_number=contact_number, password=password)
         user.save()
         
         # Proceed to sign in page
@@ -67,7 +68,7 @@ def signup(request):
         # Called first when signup/ is entererd
         return render(request, 'customer_signup.html')
     
-def employee_signin(request):
+def salad_employee_signin(request):
     if request.method == 'POST':
         username = request.POST.get('inputUsername')
         password = request.POST.get('inputPassword')
@@ -84,7 +85,7 @@ def employee_signin(request):
     else:
         return render(request, 'employee_signin.html')
     
-def employee_signup(request):
+def salad_employee_signup(request):
     if request.method == 'POST': # POST means sending data to the server
 
         # Get neccessary info with name attribute in form of signup.html
@@ -101,7 +102,7 @@ def employee_signup(request):
             return render(request, 'customer_signup.html', {'error_message': 'Passwords do not match'})
 
         # Reject username if already exists in the database
-        if Employee.objects.filter(username=username).exists():
+        if Salad_Employee.objects.filter(username=username).exists():
             return render(request, 'customer_signup.html', {'error_message': 'Username already taken'})
 
         # Mismatch password
@@ -109,11 +110,11 @@ def employee_signup(request):
             return render(request, 'customer_signup.html', {'error_message' : 'password failed to match'})
 
         # Reject username if already exist in database
-        if Employee.objects.filter(username = username).exists():
+        if Salad_Employee.objects.filter(username = username).exists():
             return render(request, 'customer_signup.html', {'error_message' : 'username already taken'})
 
         # Put in database
-        user = Employee.objects.create_user(username=username, password=password)
+        user = Salad_Employee.objects.create_user(username=username, password=password)
         user.save()
         
         # Proceed to sign in page
