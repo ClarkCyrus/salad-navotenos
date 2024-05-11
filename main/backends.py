@@ -1,6 +1,6 @@
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
-from users.models import Salad_Customer
+from users.models import Salad_Customer, Crochet_Customer
 
 class CustomerAuthentication(ModelBackend):
 
@@ -18,7 +18,7 @@ class CustomerAuthentication(ModelBackend):
         if username is None:
             return None
 
-        user = Salad_Customer.objects.filter(Q(username=username) | Q(contact_number=username)).first()
+        user = Crochet_Customer.objects.filter(Q(username=username) | Q(contact_number=username)).first()
         if user and user.check_password(password):
             return user
         return None
