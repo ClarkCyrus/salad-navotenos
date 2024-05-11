@@ -1,5 +1,5 @@
 from django.db import models
-from ..users.models import Salad_Customer, Crochet_Customer
+from users.models import Salad_Customer, Crochet_Customer
 
 class Salad_Order(models.Model):
     user = models.ForeignKey(Salad_Customer, on_delete=models.CASCADE)
